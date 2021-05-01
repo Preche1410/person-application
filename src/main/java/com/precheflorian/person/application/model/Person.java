@@ -1,32 +1,29 @@
 package com.precheflorian.person.application.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
+
+@Table(name = "Person")
 public class Person{
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
   private long id;
-  private final String firstName;
-  private final String lastName;
+  private String firstName;
+  private String lastName;
 
-public Person(String firstName, String lastName){
-  this.firstName=firstName;
-  this.lastName=lastName;
+@Override
+public String toString(){
+  return "Person[id=" + id + ", firstName=" +firstName+", lastName="+lastName+ "]";
 }
 
-public long getId(){
-  return id;
-}
 
-public String getFirstName(){
-  return firstName;
-}
-
-public String getLastName(){
-  return lastName;
-}
 }
